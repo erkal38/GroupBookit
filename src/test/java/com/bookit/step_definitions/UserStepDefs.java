@@ -1,13 +1,17 @@
 package com.bookit.step_definitions;
 
+import com.bookit.utilities.BookItApiUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class UserStepDefs {
+    String token;
+
     @Given("I logged Bookit api using {string} and {string}")
     public void i_logged_Bookit_api_using_and(String string, String string2) {
-
+        token = BookItApiUtils.generateToken(string, string2);
+        System.out.println(token);
 
     }
 
