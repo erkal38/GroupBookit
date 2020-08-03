@@ -7,6 +7,7 @@ import static io.restassured.RestAssured.given;
 public class BookItApiUtils {
 
     public static String generateToken(String email,String password){
+        //https://cybertek-reservation-api-docs.herokuapp.com/
 
         Response response = given().queryParam("email", email)
                 .queryParam("password", password)
