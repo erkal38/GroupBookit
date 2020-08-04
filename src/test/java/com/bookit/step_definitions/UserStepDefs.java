@@ -15,8 +15,8 @@ public class UserStepDefs {
     Response response;
 
     @Given("I logged Bookit api using {string} and {string}")
-    public void i_logged_Bookit_api_using_and(String string, String string2) {
-        token = BookItApiUtils.generateToken(string, string2);
+    public void i_logged_Bookit_api_using_and(String email, String password) {
+        token = BookItApiUtils.generateToken(email, password);
     }
 
     @When("I get the current user information from api")
@@ -26,7 +26,7 @@ public class UserStepDefs {
     }
 
     @Then("status code should be {int}")
-    public void status_code_should_be(Integer int1) {
-        Assert.assertEquals(response.getStatusCode(),200);
+    public void status_code_should_be(int int1) {
+        Assert.assertEquals(response.getStatusCode(),int1);
     }
 }
