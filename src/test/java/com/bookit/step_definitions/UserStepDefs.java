@@ -99,8 +99,6 @@ public class UserStepDefs {
         Assert.assertEquals(dbResultMap.get("firstname")+" "+dbResultMap.get("lastname"),fullNameUi);
         Assert.assertEquals(apiResponseMap.get("role"),roleUi);
 
-
-
     }
 
 }
