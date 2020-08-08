@@ -146,4 +146,12 @@ public class ExcelUtil {
         return workSheet.getLastRowNum()+1;
     }
 
+    public void printCucumberRowIndex(){
+        System.out.println("|rowindex|");
+        int rowCount = rowCount();
+        for (int i = 1; i <rowCount; i++) {
+            System.out.println("|"+i+"|");
+        }
+    }
+
 }
