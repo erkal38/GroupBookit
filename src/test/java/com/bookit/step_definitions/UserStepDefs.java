@@ -115,8 +115,8 @@ public class UserStepDefs {
     @Given("user logs in UI BookIt by using {int}. row credentials of Excel from {string}{string}")
     public void user_logs_in_UI_BookIt_by_using_row_credentials_of_Excel_from(Integer rowIndex, String path, String sheet) {
         ExcelUtil excelUtil = new ExcelUtil(path,sheet);
-        emailGlobal = excelUtil.getDataList().get(rowIndex-1).get("Email");
-        passwordGlobal = excelUtil.getDataList().get(rowIndex-1).get("password");
+        emailGlobal = excelUtil.getDataList().get(rowIndex).get("Email");
+        passwordGlobal = excelUtil.getDataList().get(rowIndex).get("password");
         Driver.get().get(ConfigurationReader.get("url"));
         Driver.get().manage().window().maximize();
         SignInPage signInPage =new SignInPage();
@@ -131,23 +131,23 @@ public class UserStepDefs {
         roleUi = selfPage.role.getText();
     }
 
-    @Given("user logs in API BookIt  by using {int}. row credentials of Excel from {string}{string}")
-    public void user_logs_in_API_BookIt_by_using_row_credentials_of_Excel_from(Integer rowIndex, String path, String sheet) {
+    @Given("user logs in API BookIt  by using same credentials")
+    public void user_logs_in_API_BookIt_by_using_same_credentials() {
         token = BookItApiUtils.generateToken(emailGlobal, passwordGlobal);
 
         response = given().header("Authorization", token)
                 .when().get(ConfigurationReader.get("qa1api.uri") + "/api/users/me");
 
         Map<String,Object> apiResponseMap = response.body().as(Map.class);
-        String ApiFirstname = (String)apiResponseMap.get("firstname");
-        String ApiLastname = (String)apiResponseMap.get("lastname");
+        String ApiFirstname = (String)apiResponseMap.get("firstName");
+        String ApiLastname = (String)apiResponseMap.get("lastName");
         fullNameApi= ApiFirstname+" "+ApiLastname;
         roleApi = (String)apiResponseMap.get("role");
         idApi = (long)((double)apiResponseMap.get("id"));
     }
 
-    @Given("user logs in DB BookIt  by using {int}. row credentials of Excel from {string}{string}")
-    public void user_logs_in_DB_BookIt_by_using_row_credentials_of_Excel_from(Integer rowIndex, String path, String sheet) {
+    @Given("user logs in DB BookIt  by using same credentials")
+    public void user_logs_in_DB_BookIt_by_using_same_credentials() {
         String query = "select id, firstname, lastname ,role\n" +
                 "from users \n" +
                 "where email = '"+emailGlobal+"';";
@@ -169,7 +169,16 @@ public class UserStepDefs {
         Assert.assertEquals(fullNameUi,fullNameDb);
         Assert.assertEquals(roleUi,roleDb);
 
+        //UI to API
+        Assert.assertEquals(fullNameUi,fullNameApi);
+        Assert.assertEquals(roleUi,roleApi);
+
+        //API to DB
+        Assert.assertEquals(fullNameDb,fullNameApi);
+        Assert.assertEquals(roleDb,roleApi);
+        Assert.assertEquals(idDb,idApi);
+
+        //UI to Excel
+
     }
-
-
 }

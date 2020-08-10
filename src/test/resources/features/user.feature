@@ -39,8 +39,8 @@ Feature: User Verification
   @wip @db
   Scenario Outline: three point verification (UI,DATABASE,API)
     Given user logs in UI BookIt by using <rowindex>. row credentials of Excel from "src/test/resources/BookIt.xlsx""Sheet1"
-    And user logs in API BookIt  by using <rowindex>. row credentials of Excel from "src/test/resources/BookIt.xlsx""Sheet1"
-    And user logs in DB BookIt  by using <rowindex>. row credentials of Excel from "src/test/resources/BookIt.xlsx""Sheet1"
+    And user logs in API BookIt  by using same credentials
+    And user logs in DB BookIt  by using same credentials
     Then UI,API and DB user information must be match
 
     Examples:
