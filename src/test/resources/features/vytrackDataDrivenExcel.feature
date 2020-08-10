@@ -3,7 +3,7 @@ Feature: User Verification
   @excel
   Scenario Outline: verify information about logged user
     Given I go to the vytrack login page
-    When I login with the <row_index> .  user cridentials
+    When I login with the <row_index> .  user credentials
     Then verify <row_index> . user logged in successfully
     Examples:
       | row_index |

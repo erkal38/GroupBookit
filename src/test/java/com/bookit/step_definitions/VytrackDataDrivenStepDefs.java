@@ -16,14 +16,15 @@ public class VytrackDataDrivenStepDefs {
         Driver.get().get("https://qa3.vytrack.com");
     }
 
-    @When("I login with the {int} .  user cridentials")
-    public void i_login_with_the_user_cridentials(int number) {
+    @When("I login with the {int} .  user credentials")
+    public void i_login_with_the_user_credentials(int number) {
         ExcelUtil qa3short = new ExcelUtil("src/test/resources/Vytracktestdata.xlsx","QA3-short");
         String userName = qa3short.getDataList().get(number-1).get("username");
         String password = qa3short.getDataList().get(number-1).get("password");
         Driver.get().findElement(By.id("prependedInput")).sendKeys(userName);
         Driver.get().findElement(By.id("prependedInput2")).sendKeys(password, Keys.ENTER);
         BrowserUtils.waitFor(3);
+
 
     }
 

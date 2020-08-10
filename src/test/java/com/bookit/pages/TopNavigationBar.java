@@ -1,5 +1,6 @@
 package com.bookit.pages;
 
+import com.bookit.utilities.BrowserUtils;
 import com.bookit.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -34,7 +35,9 @@ public abstract class TopNavigationBar {
 
 	public void goToSelf() {
 		Actions actions = new Actions(Driver.get());
+		BrowserUtils.waitForVisibility(my,5);
 		actions.moveToElement(my).perform();
+		BrowserUtils.waitForClickablility(self,5);
 		self.click();
 	}
 
