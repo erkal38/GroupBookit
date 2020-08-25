@@ -55,9 +55,6 @@ public class UserStepDefs {
                 .get(ConfigurationReader.get("qa1api.uri") + "/api/users/me");
 
 
-
-                .when().get(ConfigurationReader.get("qa1api.uri") + "/api/users/me");
-
     }
 
     @Then("status code should be {int}")
