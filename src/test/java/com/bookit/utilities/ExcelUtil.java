@@ -84,7 +84,7 @@ public class ExcelUtil {
         // this will be returned
         List<Map<String, String>> data = new ArrayList<>();
 
-        for (int i = 1; i < rowCount(); i++) {
+        for (int i = 0; i < rowCount(); i++) {
             // get each row
             Row row = workSheet.getRow(i);
             // create map of the row using the column and value
@@ -144,6 +144,14 @@ public class ExcelUtil {
 
     public int rowCount() {
         return workSheet.getLastRowNum()+1;
+    }
+
+    public void printCucumberRowIndex(){
+        System.out.println("|rowindex|");
+        int rowCount = rowCount();
+        for (int i = 1; i <rowCount; i++) {
+            System.out.println("|"+i+"|");
+        }
     }
 
 }

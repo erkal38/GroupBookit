@@ -22,7 +22,7 @@ Feature: User Verification
     Then UI,API and Database user information must be match
 
 
-  @db
+   @db
   Scenario Outline: three point verification (UI,DATABASE,API)
     Given user logs in using "<email>" "<password>"
     When user is on the my self page
@@ -31,6 +31,30 @@ Feature: User Verification
     Then UI,API and Database user information must be match
 
     Examples:
-      | email                | password     |
-      | sbirdbj@fc2.com      | asenorval    |
-      | ccornil1h@usnews.com | corniecornil |
+      | email                      | password     |
+      | sbirdbj@fc2.com            | asenorval    |
+      | ccornil1h@usnews.com       | corniecornil |
+      | efewtrell8c@craigslist.org | jamesmay     |
+
+  @wip @db
+  Scenario Outline: three point verification (UI,DATABASE,API)
+    Given user logs in UI BookIt by using <rowindex>. row credentials of Excel from "src/test/resources/BookIt.xlsx""Sheet1"
+    And user logs in API BookIt  by using same credentials
+    And user logs in DB BookIt  by using same credentials
+    Then UI,API and DB user information must be match
+
+    Examples:
+      | rowindex |
+      | 1        |
+      | 2        |
+      | 3        |
+      | 4        |
+      | 5        |
+      | 6        |
+      | 7        |
+      | 8        |
+      | 9        |
+      | 10       |
+      | 11       |
+      | 12       |
+      | 13       |
