@@ -16,7 +16,7 @@ public class HuntMustafaStepDef {
 
     @When("user selects next day on calendar")
     public void user_selects_next_day_on_calendar() {
-        new HuntPage().getTomorrow();
+        new HuntPage().selectTomorrow();
     }
 
 }
