@@ -7,7 +7,7 @@ Feature: User Verification
     When I get the current user information from api
     Then status code should be 200
 
-  @wip @db
+   @db
   Scenario: verify information about logged user from api and database
     Given I logged Bookit api using "sbirdbj@fc2.com" and "asenorval"
     When I get the current user information from api
@@ -36,7 +36,7 @@ Feature: User Verification
       | ccornil1h@usnews.com       | corniecornil |
       | efewtrell8c@craigslist.org | jamesmay     |
 
-  @wip @db
+   @db
   Scenario Outline: three point verification (UI,DATABASE,API)
     Given user logs in UI BookIt by using <rowindex>. row credentials of Excel from "src/test/resources/BookIt.xlsx""Sheet1"
     And user logs in API BookIt  by using same credentials

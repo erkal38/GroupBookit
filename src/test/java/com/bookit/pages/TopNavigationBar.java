@@ -2,6 +2,7 @@ package com.bookit.pages;
 
 import com.bookit.utilities.BrowserUtils;
 import com.bookit.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -51,5 +52,9 @@ public abstract class TopNavigationBar {
 		Actions actions = new Actions(Driver.get());
 		actions.moveToElement(my).perform();
 		signOut.click();
+	}
+
+	public void navigateToPage(String page){
+		Driver.get().findElement(By.linkText(page)).click();
 	}
 }
