@@ -39,7 +39,7 @@ public class HuntPage extends TopNavigationBar{
         }else{
             Driver.get().findElement(By.xpath("//td[.='"+dt.getDate()+"']")).click();
         }
-
+        //git
         BrowserUtils.waitFor(2);
     }
 
